@@ -4,8 +4,8 @@
             <h1>
                 Create Your Account 
             </h1>
-            <input type="text" id="username" name="username" v-model="username" placeholder="Username" class="input-field"/>
-            <input type="text" id="name" name="name" v-model="name" placeholder="Name" class="input-field"/>
+            <input type="text" id="username" name="username" v-model="username" placeholder="Username" class="input-field" />
+            <input type="text" id="name" name="name" v-model="name" placeholder="Name" class="input-field" />
             <input type="text" id="surname" name="surname" v-model="surname" placeholder="Surname" class="input-field"/>            
             <input type="email" v-model="email" placeholder="Enter your Email" class="input-field"/>
             <input type="password" v-model="password" placeholder="Enter your Password" class="input-field"/>
@@ -52,7 +52,11 @@
     } 
 </style>
 <script>
-import {app} from '@/firebase';
+
+//import { getAuth,createUserWithEmailAndPassword } from 'firebase/auth';
+import {auth} from '/src/firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+
     export default {
     name: 'SignUp',
     data(){
@@ -67,21 +71,19 @@ import {app} from '@/firebase';
         }
     },
     methods: {
-        signup() {
-            if(this.password !=this.passwordRepeat ){
+         signup() {
+            if(this.password !== this.passwordRepeat ){
                 alert("PASSWORDS DO NOT MATCH");
+                return
             }
-            else {
 
-            app.auth()
-            .createUserWithEmailAndPassword(this.email,this.password)
-            .then(function (){
-                console.log("Uspjesna registracija");
-            }) .catch(function(error) {
-                console.error("greška",error)
+            createUserWithEmailAndPassword( auth, this.email, this.password)
+            .then((userCredential) =>{
+                console.log('User Registered', userCredential.user)
             })
-            console.log("ide gas")
-            }
+            .catch((error) => {
+                console.error('Error signing up: ', error.code, error.message);
+            });
         },
     }
 }
