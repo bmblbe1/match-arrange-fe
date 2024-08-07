@@ -4,9 +4,9 @@
             <h1>
                 Login to Page
             </h1>
-            <input type="email" placeholder="Enter your Email" class="input-field"/>
-            <input type="password" placeholder="Enter your Password" class="input-field"/>
-            <button @click="logMessage">Login</button>
+            <input type="email" v-model="email" placeholder="Enter your Email" class="input-field"/>
+            <input type="password" v-model="password" placeholder="Enter your Password" class="input-field"/>
+            <button @click="login">Login</button>
             <div>
                 Do not have an account?  <router-link to="/register">Register here.</router-link>
             </div>
@@ -29,11 +29,11 @@
         border-radius: 12px;
         padding: 24px;
         gap: 16px;
-
-        h1 {
+    }
+        .box h1 {
             text-align: center;
         }
-    }
+
 
     .input-field {
         padding: 12px;
@@ -46,12 +46,30 @@
     } 
 </style>
 <script>
+import { auth } from '/src/firebase'
+import { signInWithEmailAndPassword } from 'firebase/auth';
+
     export default {
     name: 'LoginPage',
+    data(){
+        return {
+            email: '',
+            password: '',             
+            }
+        },
     methods: {
-    logMessage() {
-      console.log('Button clicked');
-    }
-  }
+         login() {
+            signInWithEmailAndPassword(auth, this.email,this.password )
+            .then((userCredential) =>{
+                const user = userCredential.user;
+                console.log('User logged in: ', user)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error('Error signing up: ', errorCode, errorMessage);
+            });
+        },
+    },
 }
 </script>

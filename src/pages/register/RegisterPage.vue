@@ -35,11 +35,11 @@
         border-radius: 12px;
         padding: 24px;
         gap: 16px;
-
-        h1 {
+    }
+       .box h1 {
             text-align: center;
         }
-    }
+   
 
     .input-field {
         padding: 12px;
