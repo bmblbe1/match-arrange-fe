@@ -63,7 +63,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
             .then((userCredential) =>{
                 const user = userCredential.user;
                 console.log('User logged in: ', user)
-                this.$router.push('/dashboard')
+                this.$router.replace('/dashboard')
             })
             .catch((error) => {
                 const errorCode = error.code;

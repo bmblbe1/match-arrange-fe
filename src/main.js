@@ -8,10 +8,10 @@ import DashboardPage from './pages/dashboard/DashboardPage.vue';
 
 
 const routes = [
-  { path: '/', component: LoginPage },
-  { path: '/login', component: LoginPage },
-  { path: '/register', component: RegisterPage },
-  { path: '/dashboard', component: DashboardPage}
+  { path: '/', component: LoginPage, name: 'login' },
+  { path: '/login', component: LoginPage, name: 'login' },
+  { path: '/register', component: RegisterPage, name: 'register' },
+  { path: '/dashboard', component: DashboardPage, name: 'dashboard'}
 ]
 
 const router = createRouter({
@@ -22,3 +22,5 @@ const router = createRouter({
 createApp(App)
   .use(router)
   .mount('#app')
+
+export default router ;

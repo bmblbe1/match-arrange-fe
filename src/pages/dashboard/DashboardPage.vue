@@ -16,7 +16,7 @@
                 <header class="header">
                     <div class="header-title">Dashboard</div>
                     <div class="sign-out">
-                        <button type="button">Sign out</button>
+                        <button @click="signout">Sign out</button>
                     </div>
                 </header>
                 <div class="content">
@@ -73,7 +73,7 @@
         text-align: center;
         font-weight: bold;
         background-color: #1a252f;
-        
+
     }
 
     .sidebar nav ul {
@@ -158,7 +158,7 @@
     button {
     font-weight: bold;
     padding: 12px 20px;
-    background-color: #3498db; /* A nice blue color */
+    background-color: #3498db; 
     color: #ffffff;
     border: none;
     border-radius: 6px;
@@ -167,7 +167,7 @@
 }
 
 button:hover {
-    background-color: #2980b9; /* A darker blue on hover */
+    background-color: #2980b9; 
     transform: scale(1.05);
 }
 
@@ -176,3 +176,23 @@ button:active {
     transform: scale(0.98);
 }
 </style>
+<script>
+import { auth } from '@/firebase';
+import { signOut } from 'firebase/auth';
+
+export default {
+    name: 'DashboardPage',
+    methods: {
+        signout(){
+            signOut(auth)
+            .then(() => {
+                console.log("Signout succesful")
+                this.$router.replace('/login')
+            })
+            .catch((error) => {
+                console.log(error , "Failed Sign Out")
+            })
+        }
+    }
+}
+</script>
