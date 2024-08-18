@@ -80,6 +80,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
             createUserWithEmailAndPassword( auth, this.email, this.password)
             .then((userCredential) =>{
                 console.log('User Registered', userCredential.user)
+                //this.$router.push('/dashboard')
             })
             .catch((error) => {
                 console.error('Error signing up: ', error.code, error.message);

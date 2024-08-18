@@ -6,7 +6,7 @@
             </h1>
             <input type="email" v-model="email" placeholder="Enter your Email" class="input-field"/>
             <input type="password" v-model="password" placeholder="Enter your Password" class="input-field"/>
-            <button @click="login">Login</button>
+            <button type = "submit" @click="login">Login</button>
             <div>
                 Do not have an account?  <router-link to="/register">Register here.</router-link>
             </div>
@@ -48,6 +48,7 @@
 <script>
 import { auth } from '/src/firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import store from '@/store'
 
     export default {
     name: 'LoginPage',
@@ -62,7 +63,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
             signInWithEmailAndPassword(auth, this.email,this.password )
             .then((userCredential) =>{
                 const user = userCredential.user;
-                console.log('User logged in: ', user)
+                console.log('User logged in: ', user);
+                store.currentUser = user;
                 this.$router.replace('/dashboard')
             })
             .catch((error) => {
