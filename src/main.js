@@ -9,7 +9,7 @@ import DashboardPage from './pages/dashboard/DashboardPage.vue';
 
 
 const routes = [
-  { path: '/', component: LoginPage, name: 'login', meta: { needsUser: false } },
+  { path: '/', component: LoginPage, meta: { needsUser: false } },
   { path: '/login', component: LoginPage, name: 'login',  meta: { needsUser: false } },
   { path: '/register', component: RegisterPage, name: 'register', meta: { needsUser: false } },
   { path: '/dashboard', component: DashboardPage, name: 'dashboard',  meta: { needsUser: true }}
