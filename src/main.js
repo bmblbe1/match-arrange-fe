@@ -6,13 +6,15 @@ import store from '/src/store'
 import LoginPage from './pages/login/LoginPage.vue';
 import RegisterPage from './pages/register/RegisterPage.vue';
 import DashboardPage from './pages/dashboard/DashboardPage.vue';
+import MatchSearchingPage from './pages/matchsearch/MatchSearchingPage.vue';
 
 
 const routes = [
   { path: '/', component: LoginPage, meta: { needsUser: false } },
   { path: '/login', component: LoginPage, name: 'login',  meta: { needsUser: false } },
   { path: '/register', component: RegisterPage, name: 'register', meta: { needsUser: false } },
-  { path: '/dashboard', component: DashboardPage, name: 'dashboard',  meta: { needsUser: true }}
+  { path: '/dashboard', component: DashboardPage, name: 'dashboard',  meta: { needsUser: true }},
+  { path: '/matchsearch', component: MatchSearchingPage, name: 'matchsearch', meta:{needsUser: false}}
 ]
 
 const router = createRouter({
