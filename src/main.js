@@ -30,7 +30,9 @@ router.beforeEach(( to, from, next) =>{
     const noUser = store.currentUser === null;
 
     if (noUser && to.meta.needsUser){
-      next({path: '/login'});
+      next({path: '/login',
+        replace: true
+      });
     }
     else if (!noUser && (to.path === '/login' || to.path === '/register')) {
       next({path: '/dashboard'}); 

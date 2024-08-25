@@ -118,8 +118,10 @@
       submitMatch() {
         const matchData = {
           times: this.selectedTimes,
-          maps: this.selectedMaps
+          maps: this.selectedMaps, 
         };
+        console.log('poslano na bazu ;)')
+
         this.$emit('submit', matchData);
       }
     }

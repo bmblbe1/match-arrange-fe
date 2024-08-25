@@ -1,4 +1,4 @@
-<template>
+<template> 
     <div class="container">
         <div class="dashboard">
             <aside class="sidebar">
@@ -179,6 +179,7 @@ button:active {
 <script>
 import { auth } from '@/firebase';
 import { signOut } from 'firebase/auth';
+import { collection, addDoc } from 'firebase/firestore';
 
 export default {
     name: 'DashboardPage',
@@ -195,6 +196,11 @@ export default {
         },
         matchSearch (){
             this.$router.push('/matchsearch');
+        },
+        addLogo(){
+            console.log(collection, addDoc )
+
+           // const imageUrl  = 
         }
     }
 }

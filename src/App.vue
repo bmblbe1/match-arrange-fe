@@ -33,8 +33,9 @@ export default {
     console.log("provjera stanja logina.")
     if (user){
       console.log(user.email);
-      store.currentUser = user;
-      
+      store.currentUser = this.user;
+      //store.currentUser = user; 
+
      /* if(currentPath === "/login"){
         console.log('Rerouting to dashboard!!!');
         router.push('/dashboard');
