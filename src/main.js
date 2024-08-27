@@ -8,6 +8,8 @@ import RegisterPage from './pages/register/RegisterPage.vue';
 import DashboardPage from './pages/dashboard/DashboardPage.vue';
 import MatchSearchingPage from './pages/matchsearch/MatchSearchingPage.vue';
 import MatchFormPage from './pages/matchsearch/MatchFormPage.vue';
+//import { onAuthStateChanged } from 'firebase/auth';
+// import { auth } from '@/firebase'
 
 const routes = [
   { path: '/', component: LoginPage, meta: { needsUser: false } },
@@ -21,7 +23,15 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+});
+
+
+/*onAuthStateChanged(auth, (user) =>{
+  if (user) {
+    store.currentUser = user;
+  } else {
+    store.currentUser = null;
+}*/ // potencijalno implementirati onauthstatechanged  u main ...
 
 
 router.beforeEach(( to, from, next) =>{
@@ -42,6 +52,8 @@ router.beforeEach(( to, from, next) =>{
   }
   console.log('to path : ',to.path, 'from paTTH',from.path, 'uSER: ' , store.currentUser );
 })
+//}) zatvara ne gornjeg on auth state changea.
+
 
 createApp(App)
   .use(router)

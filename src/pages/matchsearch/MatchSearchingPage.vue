@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <button class="quick-search" @click="quickSearch">Quick Search</button>
+      <button class="match-search" @click="searchMatch">Search Match</button>
       <div class="matches">
         <div class="match" v-for="match in matches" :key="match.id">
           <span class="time">{{ match.time }}</span>
@@ -23,8 +23,8 @@
       }
     },
     methods: {
-      quickSearch() {
-        console.log("Qquick searchhh");
+      searchMatch() {
+        this.$router.push('/matchsearch/form')
       }
     }
   }
@@ -47,7 +47,7 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
   
-  .quick-search {
+  .match-search {
     display: block;
     width: 100%;
     padding: 10px 20px;
