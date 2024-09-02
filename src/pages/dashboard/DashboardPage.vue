@@ -20,8 +20,8 @@
                     </div>
                 </header>
                 <div class="content">
-                    <div class="card">
-                        <h3 @click="matchSearch">Search match</h3>
+                    <div class="card" @click="matchSearch">
+                        <h3 >Search match</h3>
                         <p>hm</p>
                     </div>
                     <div class="card">

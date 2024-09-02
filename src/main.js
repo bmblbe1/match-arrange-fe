@@ -8,6 +8,7 @@ import RegisterPage from './pages/register/RegisterPage.vue';
 import DashboardPage from './pages/dashboard/DashboardPage.vue';
 import MatchSearchingPage from './pages/matchsearch/MatchSearchingPage.vue';
 import MatchFormPage from './pages/matchsearch/MatchFormPage.vue';
+import ManageTeamPage from './pages/manageteam/ManageTeamPage.vue';
 //import { onAuthStateChanged } from 'firebase/auth';
 // import { auth } from '@/firebase'
 
@@ -17,7 +18,8 @@ const routes = [
   { path: '/register', component: RegisterPage, name: 'register', meta: { needsUser: false } },
   { path: '/dashboard', component: DashboardPage, name: 'dashboard',  meta: { needsUser: true }},
   { path: '/matchsearch', component: MatchSearchingPage, name: 'matchsearch', meta:{needsUser: false}},//needuser:true(false is just for test purpose)
-  { path: '/matchsearch/form', component: MatchFormPage, name: 'matchform', meta: {needsUser:false}} //needuser:true(false is just for test purpose)
+  { path: '/matchsearch/form', component: MatchFormPage, name: 'matchform', meta: {needsUser:false}}, //needuser:true(false is just for test purpose)
+  { path: '/manageteam', component: ManageTeamPage, name: 'manageteam'}
 ]
 
 const router = createRouter({
